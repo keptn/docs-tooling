@@ -1,5 +1,3 @@
-<!--this script can embed yaml from lifecycle-toolkit repo into a doc page, usage:-->
-<!--{{< embed path="/operator/config/samples/python_execution/taskdefinition_pyfunction_recursive.yaml" >}}-->
 
 {{ $u := printf "%s%s/%s" "https://raw.githubusercontent.com/keptn/lifecycle-toolkit/" (.Page.Params.currentversion) (.Get "path") }}
     {{ with resources.GetRemote $u }}

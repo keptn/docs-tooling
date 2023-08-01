@@ -22,6 +22,27 @@ on:
         type: "boolean"
         default: false
         required: false
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Tag for the functions runner image / docs version"
+        type: "string"
+        required: true
+      page_dir:
+        description: "Root directory of the website"
+        type: "string"
+        required: false
+        default: "./tmp/page/"
+      docs_dir:
+        description: "Sub directory of documentation"
+        type: "string"
+        required: false
+        default: "./docs"
+      dry_run:
+        description: "Flag for testing"
+        type: "boolean"
+        default: false
+        required: false
 
 jobs:
   release-docs:

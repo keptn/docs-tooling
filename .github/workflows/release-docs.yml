@@ -64,7 +64,7 @@ jobs:
 
       - name: Move old latest release documentation folder
         if: ${{ steps.folder.outputs.migrate }}
-        run: mv -fv "${{ inputs.page_dir }}${{ inputs.docs_dir }}/content/en/docs/." "${{ inputs.page_dir }}${{ inputs.docs_dir }}/content/en/${{ steps.folder.outputs.migrate }}"
+        run: mv -fv "${{ inputs.page_dir }}${{ inputs.docs_dir }}/content/en/docs" "${{ inputs.page_dir }}${{ inputs.docs_dir }}/content/en/${{ steps.folder.outputs.migrate }}"
 
       - name: Copy configuration
         if: ${{ steps.folder.outputs.latest }}
@@ -73,7 +73,7 @@ jobs:
 
       - name: Copy documentation folder
         run: |
-            cp -R ./docs/content/en/docs/. "${{ inputs.page_dir }}${{ inputs.docs_dir }}/content/en/${{ steps.folder.outputs.name}}"
+            cp -R ./docs/content/en/docs "${{ inputs.page_dir }}${{ inputs.docs_dir }}/content/en/${{ steps.folder.outputs.name}}"
             echo "${{ inputs.tag_name }}" > "${{ inputs.page_dir }}${{ inputs.docs_dir }}/content/en/${{ steps.folder.outputs.name}}/version"
             sed -i 's/currentversion: main/currentversion: ${{ inputs.tag_name }}/g' "${{ inputs.page_dir }}${{ inputs.docs_dir }}/content/en/${{ steps.folder.outputs.name}}/_index.md"
       
